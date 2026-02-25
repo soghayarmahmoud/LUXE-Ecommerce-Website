@@ -5,7 +5,7 @@
     "price": 249.99,
     "category": "Electronics",
     "description": "Premium over-ear headphones with active noise cancellation, 30-hour battery life, and Hi-Res Audio support. Features memory foam ear cushions for all-day comfort and multipoint Bluetooth connectivity.",
-    "image": "assets/images/headphones.jpg",
+    "image": "",
     "rating": 4.8,
     "badge": "Best Seller"
   },
@@ -15,7 +15,7 @@
     "price": 59.99,
     "category": "Electronics",
     "description": "Ergonomic aluminum laptop stand with adjustable height and angle. Compatible with all laptops up to 17 inches. Improves airflow and reduces neck strain.",
-    "image": "assets/images/laptop-stand.jpg",
+    "image": "",
     "rating": 4.5,
     "badge": null
   },
@@ -25,7 +25,7 @@
     "price": 199.99,
     "category": "Electronics",
     "description": "Advanced fitness tracker with AMOLED display, GPS, heart rate monitoring, SpO2 sensor, and 14-day battery life. Water-resistant to 50 meters with 100+ workout modes.",
-    "image": "assets/images/smartwatch.jpg",
+    "image": "",
     "rating": 4.7,
     "badge": "New"
   },
@@ -35,7 +35,7 @@
     "price": 89.99,
     "category": "Electronics",
     "description": "360° immersive sound with deep bass. IP67 waterproof and dustproof design, 20-hour playtime, and built-in power bank. Perfect for outdoor adventures.",
-    "image": "assets/images/speaker.jpg",
+    "image": "",
     "rating": 4.6,
     "badge": null
   },
@@ -45,7 +45,7 @@
     "price": 129.99,
     "category": "Electronics",
     "description": "Full-size mechanical keyboard with hot-swappable switches, per-key RGB lighting, and aircraft-grade aluminum frame. N-key rollover with programmable macros.",
-    "image": "assets/images/keyboard.jpg",
+    "image": "",
     "rating": 4.4,
     "badge": null
   },
@@ -55,7 +55,7 @@
     "price": 89.99,
     "category": "Clothing",
     "description": "Luxuriously soft 100% extra-fine merino wool crew-neck sweater. Temperature regulating and naturally odor-resistant. Available in classic colors.",
-    "image": "assets/images/sweater.jpg",
+    "image": "",
     "rating": 4.6,
     "badge": null
   },
@@ -65,7 +65,7 @@
     "price": 64.99,
     "category": "Clothing",
     "description": "Modern slim-fit chinos crafted from stretch cotton twill. Features a comfortable mid-rise waist and tapered leg. Wrinkle-resistant for easy care.",
-    "image": "assets/images/chinos.jpg",
+    "image": "",
     "rating": 4.3,
     "badge": null
   },
@@ -75,7 +75,7 @@
     "price": 159.99,
     "category": "Clothing",
     "description": "3-layer waterproof breathable shell jacket with sealed seams. Features adjustable hood, pit zips for ventilation, and multiple zippered pockets.",
-    "image": "assets/images/jacket.jpg",
+    "image": "",
     "rating": 4.7,
     "badge": "Popular"
   },
@@ -84,8 +84,8 @@
     "name": "Classic Leather Sneakers",
     "price": 119.99,
     "category": "Clothing",
-    "description": "Minimalist white leather sneakers with cushioned insoles and durable rubber outsoles. Hand-stitched detailing for a premium finish that only gets better with age.",
-    "image": "assets/images/sneakers.jpg",
+    "description": "Minimalist white leather sneakers with cushioned insoles and durable rubber outsoles. Hand-stitched detailing for a premium finish.",
+    "image": "",
     "rating": 4.5,
     "badge": null
   },
@@ -95,7 +95,7 @@
     "price": 39.99,
     "category": "Clothing",
     "description": "Ultralight moisture-wicking running shirt with flatlock seams and reflective details. Made from recycled polyester with UPF 30+ sun protection.",
-    "image": "assets/images/running-tee.jpg",
+    "image": "",
     "rating": 4.4,
     "badge": null
   },
@@ -105,7 +105,7 @@
     "price": 74.99,
     "category": "Home",
     "description": "Set of 3 hand-thrown ceramic vases in complementary earth tones. Each piece is unique with a matte glaze finish. Perfect for dried flowers or as standalone décor.",
-    "image": "assets/images/vase.jpg",
+    "image": "",
     "rating": 4.8,
     "badge": "Handmade"
   },
@@ -115,7 +115,7 @@
     "price": 139.99,
     "category": "Home",
     "description": "Minimalist tripod floor lamp with solid oak legs and a linen drum shade. Warm ambient lighting with a dimmable LED bulb included. 150cm height.",
-    "image": "assets/images/lamp.jpg",
+    "image": "",
     "rating": 4.6,
     "badge": null
   },
@@ -124,8 +124,8 @@
     "name": "Weighted Linen Throw Blanket",
     "price": 94.99,
     "category": "Home",
-    "description": "Stonewashed French linen throw with a gentle drape. Pre-washed for softness and naturally temperature-regulating. Fits standard sofas at 150×200cm.",
-    "image": "assets/images/blanket.jpg",
+    "description": "Stonewashed French linen throw with a gentle drape. Pre-washed for softness and naturally temperature-regulating. 150×200cm.",
+    "image": "",
     "rating": 4.5,
     "badge": null
   },
@@ -134,8 +134,8 @@
     "name": "Bamboo Desk Organizer",
     "price": 44.99,
     "category": "Home",
-    "description": "Multi-compartment bamboo organizer with phone stand, pen holder, and mail sorter. Sustainably sourced bamboo with smooth sanded edges and natural oil finish.",
-    "image": "assets/images/organizer.jpg",
+    "description": "Multi-compartment bamboo organizer with phone stand, pen holder, and mail sorter. Sustainably sourced bamboo with smooth sanded edges.",
+    "image": "",
     "rating": 4.3,
     "badge": "Eco"
   },
@@ -144,8 +144,8 @@
     "name": "Aromatherapy Candle Set",
     "price": 54.99,
     "category": "Home",
-    "description": "Set of 4 soy wax candles in hand-poured concrete vessels. Scents include Lavender Fields, Cedar & Sage, Ocean Breeze, and Vanilla Chai. 45-hour burn time each.",
-    "image": "assets/images/candles.jpg",
+    "description": "Set of 4 soy wax candles in hand-poured concrete vessels. Scents: Lavender Fields, Cedar & Sage, Ocean Breeze, Vanilla Chai. 45hr burn each.",
+    "image": "",
     "rating": 4.7,
     "badge": null
   },
@@ -154,8 +154,8 @@
     "name": "Leather Crossbody Bag",
     "price": 149.99,
     "category": "Accessories",
-    "description": "Full-grain vegetable-tanned leather crossbody with adjustable strap. Features internal zip pocket, card slots, and magnetic closure. Develops a beautiful patina over time.",
-    "image": "assets/images/bag.jpg",
+    "description": "Full-grain vegetable-tanned leather crossbody with adjustable strap. Features internal zip pocket, card slots, and magnetic closure.",
+    "image": "",
     "rating": 4.8,
     "badge": "Premium"
   },
@@ -164,8 +164,8 @@
     "name": "Titanium Aviator Sunglasses",
     "price": 179.99,
     "category": "Accessories",
-    "description": "Ultra-lightweight titanium frame aviators with polarized Carl Zeiss lenses. 100% UV400 protection with anti-reflective coating. Includes leather case.",
-    "image": "assets/images/sunglasses.jpg",
+    "description": "Ultra-lightweight titanium frame aviators with polarized Carl Zeiss lenses. 100% UV400 protection with anti-reflective coating.",
+    "image": "",
     "rating": 4.6,
     "badge": null
   },
@@ -174,8 +174,8 @@
     "name": "Minimalist Automatic Watch",
     "price": 299.99,
     "category": "Accessories",
-    "description": "Japanese automatic movement with sapphire crystal glass. 40mm case in brushed stainless steel with a genuine Italian leather strap. Water-resistant to 100m.",
-    "image": "assets/images/watch.jpg",
+    "description": "Japanese automatic movement with sapphire crystal glass. 40mm brushed stainless steel case with genuine Italian leather strap. 100m WR.",
+    "image": "",
     "rating": 4.9,
     "badge": "Best Seller"
   },
@@ -184,8 +184,8 @@
     "name": "Wool & Cashmere Scarf",
     "price": 69.99,
     "category": "Accessories",
-    "description": "Luxurious blend of 70% merino wool and 30% cashmere. Generous oversized dimensions at 200×70cm. Available in timeless herringbone and solid patterns.",
-    "image": "assets/images/scarf.jpg",
+    "description": "Luxurious blend of 70% merino wool and 30% cashmere. Generous oversized dimensions at 200×70cm. Available in herringbone and solid patterns.",
+    "image": "",
     "rating": 4.5,
     "badge": null
   },
@@ -194,8 +194,8 @@
     "name": "Carbon Fiber Card Holder",
     "price": 34.99,
     "category": "Accessories",
-    "description": "Ultra-slim RFID-blocking cardholder in genuine carbon fiber. Holds up to 12 cards with a quick-access pull tab. Weighs just 30 grams.",
-    "image": "assets/images/cardholder.jpg",
+    "description": "Ultra-slim RFID-blocking cardholder in genuine carbon fiber. Holds up to 12 cards with a quick-access pull tab. Weighs just 30g.",
+    "image": "",
     "rating": 4.4,
     "badge": null
   }

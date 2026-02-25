@@ -376,23 +376,13 @@ function goBackToShop() {
 
 /** Initialize checkout */
 export function initCheckout() {
+  let wasCheckout = false;
   subscribe((state) => {
-    const shopEl = $('#shopSection');
-    const heroEl = $('#heroBanner');
-    const checkoutEl = $('#checkoutSection');
-    const footerEl = $('#footer');
-
-    if (state.currentPage === 'checkout') {
-      shopEl.style.display = 'none';
-      heroEl.style.display = 'none';
-      checkoutEl.style.display = 'block';
-      footerEl.style.display = 'none';
+    if (state.currentPage === 'checkout' && !wasCheckout) {
+      wasCheckout = true;
       renderCheckout();
-    } else {
-      shopEl.style.display = 'block';
-      heroEl.style.display = 'flex';
-      checkoutEl.style.display = 'none';
-      footerEl.style.display = 'block';
+    } else if (state.currentPage !== 'checkout') {
+      wasCheckout = false;
     }
   });
 }

@@ -39,6 +39,16 @@
   --bg-sidebar: var(--color-white);
   --bg-overlay: rgba(13, 16, 37, 0.6);
 
+  /* ── Text ── */
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+  --text-muted: var(--color-gray-400);
+  --text-inverse: var(--color-white);
+
+  /* ── Borders ── */
+  --border-color: var(--color-gray-200);
+  --border-light: var(--color-gray-100);
+
   /* ── Typography ── */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
@@ -111,4 +121,70 @@
   --sidebar-width: 280px;
   --cart-width: 420px;
   --container-max: 1400px;
+}
+
+/* ==============================
+   DARK THEME
+   ============================== */
+[data-theme="dark"] {
+  --color-white: #1a1d2e;
+  --color-gray-50: #12141f;
+  --color-gray-100: #1a1d2e;
+  --color-gray-200: #252840;
+  --color-gray-300: #363a55;
+  --color-gray-400: #5a5f7d;
+  --color-gray-500: #8b90a7;
+  --color-gray-600: #b0b5ca;
+  --color-gray-700: #d0d4e4;
+  --color-gray-800: #e8eaf2;
+  --color-gray-900: #f0f1f7;
+  --color-black: #ffffff;
+
+  --bg-primary: #0d0f18;
+  --bg-card: #1a1d2e;
+  --bg-sidebar: #1a1d2e;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+
+  --text-primary: #f0f1f7;
+  --text-secondary: #b0b5ca;
+  --text-muted: #5a5f7d;
+  --text-inverse: #0d0f18;
+
+  --border-color: #252840;
+  --border-light: #1e2135;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
+
+  --color-primary: #8b7cf7;
+  --color-primary-light: #b8b0ff;
+  --color-primary-dark: #6c5ce7;
+  --color-primary-rgb: 139, 124, 247;
+}
+
+/* Dark mode body */
+[data-theme="dark"] body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Smooth transition for theme changes */
+body,
+.header,
+.sidebar,
+.product-card,
+.cart-drawer,
+.modal,
+.footer,
+.hero,
+.page-section,
+.checkout,
+input,
+select,
+textarea,
+button {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }

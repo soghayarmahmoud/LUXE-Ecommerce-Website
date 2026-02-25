@@ -32,7 +32,7 @@ const state = {
         minRating: 0,
         sort: 'featured',
     },
-    currentPage: 'shop', // 'shop' | 'checkout'
+    currentPage: 'shop', // 'shop' | 'about' | 'contact' | 'checkout'
     user: null,          // { id, name, email, phone }
     location: null,      // { lat, lng, address, label }
 };
