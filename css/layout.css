@@ -1,0 +1,184 @@
+/* ==============================
+   LAYOUT
+   ============================== */
+
+.main {
+    padding-top: calc(var(--header-height) + var(--space-8));
+    min-height: 100vh;
+}
+
+.main__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: var(--space-8);
+    align-items: start;
+}
+
+/* ── Hero Section ── */
+.hero {
+    position: relative;
+    padding: calc(var(--header-height) + var(--space-16)) var(--space-6) var(--space-16);
+    background: linear-gradient(135deg, var(--color-gray-900) 0%, #2d1b69 50%, var(--color-primary-dark) 100%);
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+}
+
+.hero__tag {
+    display: inline-block;
+    padding: var(--space-2) var(--space-5);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-full);
+    color: var(--color-accent-light);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+}
+
+.hero__title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-5);
+    line-height: 1.15;
+}
+
+.hero__title em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--color-accent-light), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero__subtitle {
+    font-size: var(--font-size-md);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-8);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-glow);
+}
+
+.hero__cta:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 0 32px rgba(var(--color-primary-rgb), 0.4);
+}
+
+.hero__cta svg {
+    transition: transform var(--transition-base);
+}
+
+.hero__cta:hover svg {
+    transform: translateX(4px);
+}
+
+/* ── Floating Orbs ── */
+.hero__decoration {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+}
+
+.hero__orb--1 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-primary);
+    top: -100px;
+    right: -100px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero__orb--2 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-accent);
+    bottom: -80px;
+    left: -80px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.hero__orb--3 {
+    width: 200px;
+    height: 200px;
+    background: var(--color-primary-light);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 12s ease-in-out infinite;
+}
+
+/* ── Toast Container ── */
+.toast-container {
+    position: fixed;
+    top: calc(var(--header-height) + var(--space-4));
+    right: var(--space-4);
+    z-index: var(--z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    pointer-events: none;
+}
+
+.toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    background: var(--color-gray-900);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    animation: slideInRight var(--transition-spring) forwards;
+    max-width: 360px;
+}
+
+.toast--success {
+    border-left: 3px solid var(--color-success);
+}
+
+.toast svg {
+    flex-shrink: 0;
+}

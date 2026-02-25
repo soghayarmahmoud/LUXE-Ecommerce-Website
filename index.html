@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="LUXE — Premium curated products for the modern lifestyle. Shop electronics, clothing, home goods, and accessories.">
+  <title>LUXE — Premium E-Commerce</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/sidebar.css">
+  <link rel="stylesheet" href="css/components/product-card.css">
+  <link rel="stylesheet" href="css/components/cart.css">
+  <link rel="stylesheet" href="css/components/modal.css">
+  <link rel="stylesheet" href="css/components/checkout.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/auth.css">
+  <link rel="stylesheet" href="css/components/location.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">
+        <span class="header__logo-icon">◆</span>
+        <span class="header__logo-text">LUXE</span>
+      </a>
+
+      <nav class="header__nav" id="headerNav">
+        <a href="#shop" class="header__nav-link active" data-page="shop">Shop</a>
+        <a href="#categories" class="header__nav-link">Categories</a>
+        <a href="#deals" class="header__nav-link">Deals</a>
+        <a href="#about" class="header__nav-link">About</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="header__location-btn" id="locationHeaderBtn" title="Set delivery location">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span class="header__location-text">Set location</span>
+        </button>
+        <button class="header__search-toggle" id="searchToggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="header__cart-btn" id="cartToggle" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 01-8 0"></path>
+          </svg>
+          <span class="header__cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO BANNER ========== -->
+  <section class="hero" id="heroBanner">
+    <div class="hero__content">
+      <span class="hero__tag">New Collection 2026</span>
+      <h1 class="hero__title">Curated for the <em>Modern</em> Lifestyle</h1>
+      <p class="hero__subtitle">Discover premium products handpicked for quality, style, and sustainability.</p>
+      <a href="#shop" class="hero__cta">Shop Now
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+    <div class="hero__decoration">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+    </div>
+  </section>
+
+  <!-- ========== MAIN SHOP SECTION ========== -->
+  <main class="main" id="shopSection">
+    <div class="main__container">
+
+      <!-- Sidebar Filters -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+          <h2 class="sidebar__title">Filters</h2>
+          <button class="sidebar__clear" id="clearFilters">Clear All</button>
+        </div>
+
+        <!-- Search -->
+        <div class="sidebar__group">
+          <label class="sidebar__label" for="searchInput">Search</label>
+          <div class="sidebar__search-wrapper">
+            <svg class="sidebar__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="sidebar__search" id="searchInput" placeholder="Search products...">
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar__group">
+          <h3 class="sidebar__label">Category</h3>
+          <div class="sidebar__categories" id="categoryFilters">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="sidebar__group">
+          <h3 class="sidebar__label">Price Range</h3>
+          <div class="sidebar__price-range">
+            <input type="range" class="sidebar__range" id="priceRange" min="0" max="500" value="500" step="10">
+            <div class="sidebar__price-values">
+              <span>$0</span>
+              <span class="sidebar__price-max" id="priceMaxLabel">$500</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="sidebar__group">
+          <h3 class="sidebar__label">Minimum Rating</h3>
+          <div class="sidebar__rating" id="ratingFilter">
+            <button class="sidebar__rating-btn active" data-rating="0">All</button>
+            <button class="sidebar__rating-btn" data-rating="4">4+★</button>
+            <button class="sidebar__rating-btn" data-rating="4.5">4.5+★</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Product Grid -->
+      <section class="products" id="productsSection">
+        <div class="products__header">
+          <h2 class="products__title">All Products</h2>
+          <div class="products__sort">
+            <label for="sortSelect" class="products__sort-label">Sort by:</label>
+            <select id="sortSelect" class="products__sort-select">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low → High</option>
+              <option value="price-high">Price: High → Low</option>
+              <option value="rating">Top Rated</option>
+              <option value="name">Name A–Z</option>
+            </select>
+          </div>
+        </div>
+        <div class="products__count" id="productsCount"></div>
+        <div class="products__grid" id="productsGrid">
+          <!-- Product cards rendered by JS -->
+        </div>
+        <div class="products__empty" id="productsEmpty" style="display:none;">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="8" x2="14" y2="14"></line>
+            <line x1="14" y1="8" x2="8" y2="14"></line>
+          </svg>
+          <h3>No products found</h3>
+          <p>Try adjusting your filters or search terms.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ========== CHECKOUT SECTION ========== -->
+  <section class="checkout" id="checkoutSection" style="display: none;">
+    <div class="checkout__container" id="checkoutContainer">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ========== CART DRAWER ========== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 01-8 0"></path>
+        </svg>
+        Your Cart
+      </h2>
+      <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-drawer__items" id="cartItems">
+      <!-- Rendered by JS -->
+    </div>
+    <div class="cart-drawer__empty" id="cartEmpty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 01-8 0"></path>
+      </svg>
+      <p>Your cart is empty</p>
+      <span>Start shopping to add items!</span>
+    </div>
+    <div class="cart-drawer__footer" id="cartFooter" style="display:none;">
+      <div class="cart-drawer__summary">
+        <div class="cart-drawer__row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-drawer__row">
+          <span>Tax (8%)</span>
+          <span id="cartTax">$0.00</span>
+        </div>
+        <div class="cart-drawer__row cart-drawer__row--total">
+          <span>Total</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+      </div>
+      <button class="cart-drawer__checkout-btn" id="checkoutBtn">
+        Proceed to Checkout
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========== QUICK VIEW MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal" id="quickViewModal">
+    <button class="modal__close" id="modalClose" aria-label="Close modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="modal__body" id="modalBody">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ========== AUTH MODAL ========== -->
+  <div class="auth-overlay" id="authOverlay"></div>
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal__header">
+      <button class="auth-modal__close" id="authModalClose" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="auth-modal__logo">
+        <span class="auth-modal__logo-icon">◆</span> LUXE
+      </div>
+      <p class="auth-modal__subtitle">Sign in to your account</p>
+    </div>
+    <div class="auth-modal__tabs">
+      <button class="auth-modal__tab active" data-auth-tab="login">Sign In</button>
+      <button class="auth-modal__tab" data-auth-tab="register">Create Account</button>
+    </div>
+    <div class="auth-modal__body">
+      <!-- Login Form -->
+      <form class="auth-form active" id="loginForm">
+        <div class="auth-form__error" id="loginError"></div>
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email</label>
+          <input class="form-input" id="loginEmail" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input class="form-input" id="loginPassword" type="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="auth-form__submit">
+          <div class="spinner"></div>
+          <span class="btn-text">Sign In</span>
+        </button>
+      </form>
+      <!-- Register Form -->
+      <form class="auth-form" id="registerForm">
+        <div class="auth-form__error" id="registerError"></div>
+        <div class="form-group">
+          <label class="form-label" for="regName">Full Name</label>
+          <input class="form-input" id="regName" type="text" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regEmail">Email</label>
+          <input class="form-input" id="regEmail" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regPhone">Phone (optional)</label>
+          <input class="form-input" id="regPhone" type="tel" placeholder="(555) 123-4567" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regPassword">Password</label>
+          <input class="form-input" id="regPassword" type="password" placeholder="Min 6 characters" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regConfirm">Confirm Password</label>
+          <input class="form-input" id="regConfirm" type="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="auth-form__submit">
+          <div class="spinner"></div>
+          <span class="btn-text">Create Account</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== LOCATION MODAL ========== -->
+  <div class="location-overlay" id="locationOverlay"></div>
+  <div class="location-modal" id="locationModal">
+    <div class="location-modal__header">
+      <h2 class="location-modal__title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        Choose Location
+      </h2>
+      <button class="location-modal__close" id="locationModalClose" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <div class="location-modal__map">
+      <div id="locationMap"></div>
+    </div>
+    <div class="location-modal__controls">
+      <div class="location-modal__search">
+        <input class="location-modal__search-input" id="locationSearchInput" type="text"
+          placeholder="Search for an address..." />
+        <button class="location-modal__gps-btn" id="gpsBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="12" r="3" />
+            <line x1="12" y1="2" x2="12" y2="6" />
+            <line x1="12" y1="18" x2="12" y2="22" />
+            <line x1="2" y1="12" x2="6" y2="12" />
+            <line x1="18" y1="12" x2="22" y2="12" />
+          </svg>
+          My Location
+        </button>
+      </div>
+      <div class="location-modal__address">
+        <svg class="location-modal__address-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <div>
+          <span class="location-modal__address-text" id="locationAddressText"><strong>Selected Location</strong>Click
+            the map or use GPS to select</span>
+          <div class="location-modal__coords" id="locationCoords">—</div>
+        </div>
+      </div>
+      <div class="location-modal__footer">
+        <input class="location-modal__label-input" id="locationLabel" type="text" placeholder="Label (e.g. Home)"
+          value="Home" />
+        <button class="location-modal__confirm-btn" id="locationConfirmBtn" disabled>Confirm Location</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TOAST NOTIFICATIONS ========== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo">
+            <span class="footer__logo-icon">◆</span>
+            <span class="footer__logo-text">LUXE</span>
+          </a>
+          <p class="footer__tagline">Premium curated products for the modern lifestyle.</p>
+        </div>
+        <div class="footer__links">
+          <h4>Shop</h4>
+          <a href="#">Electronics</a>
+          <a href="#">Clothing</a>
+          <a href="#">Home</a>
+          <a href="#">Accessories</a>
+        </div>
+        <div class="footer__links">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer__links">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Returns</a>
+          <a href="#">Shipping</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 LUXE. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Entry Point -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

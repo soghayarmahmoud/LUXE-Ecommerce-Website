@@ -1,0 +1,114 @@
+/* ==============================
+   DESIGN TOKENS — LUXE Theme
+   ============================== */
+:root {
+  /* ── Primary Palette ── */
+  --color-primary: #6c5ce7;
+  --color-primary-light: #a29bfe;
+  --color-primary-dark: #4a3fb5;
+  --color-primary-rgb: 108, 92, 231;
+
+  /* ── Accent ── */
+  --color-accent: #00cec9;
+  --color-accent-light: #81ecec;
+  --color-accent-dark: #00a8a3;
+
+  /* ── Semantic ── */
+  --color-success: #00b894;
+  --color-warning: #fdcb6e;
+  --color-error: #e17055;
+  --color-info: #74b9ff;
+
+  /* ── Neutrals ── */
+  --color-white: #ffffff;
+  --color-gray-50: #f8f9fc;
+  --color-gray-100: #f1f3f8;
+  --color-gray-200: #e2e6ef;
+  --color-gray-300: #cdd3e0;
+  --color-gray-400: #a0a8c0;
+  --color-gray-500: #717b96;
+  --color-gray-600: #545e75;
+  --color-gray-700: #3d4663;
+  --color-gray-800: #2a3050;
+  --color-gray-900: #1a1f36;
+  --color-black: #0d1025;
+
+  /* ── Background ── */
+  --bg-primary: var(--color-gray-50);
+  --bg-card: var(--color-white);
+  --bg-sidebar: var(--color-white);
+  --bg-overlay: rgba(13, 16, 37, 0.6);
+
+  /* ── Typography ── */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3.5rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ── Spacing ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ── Border Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.14);
+  --shadow-glow: 0 0 24px rgba(var(--color-primary-rgb), 0.25);
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-index scale ── */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 500;
+  --z-modal: 600;
+  --z-cart: 700;
+  --z-toast: 800;
+  --z-header: 900;
+
+  /* ── Layout ── */
+  --header-height: 72px;
+  --sidebar-width: 280px;
+  --cart-width: 420px;
+  --container-max: 1400px;
+}

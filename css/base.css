@@ -1,0 +1,140 @@
+/* ==============================
+   BASE / RESET
+   ============================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    color: var(--color-gray-900);
+    background-color: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+    outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* ── Typography ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-gray-900);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+}
+
+h4 {
+    font-size: var(--font-size-lg);
+}
+
+p {
+    color: var(--color-gray-600);
+    line-height: var(--line-height-relaxed);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-400);
+}
+
+/* ── Selection ── */
+::selection {
+    background: rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-primary-dark);
+}
