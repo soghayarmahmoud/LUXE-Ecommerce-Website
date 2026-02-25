@@ -2,7 +2,7 @@
 // API — Product Data Fetching
 // ==============================
 
-import { dispatch } from '../store.js';
+import { dispatch } from './store.js';
 
 /**
  * Fetch products from the local JSON file

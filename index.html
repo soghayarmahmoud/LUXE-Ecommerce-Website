@@ -45,15 +45,15 @@
   <!-- ========== HEADER ========== -->
   <header class="header" id="header">
     <div class="header__container">
-      <a href="#" class="header__logo" data-page="shop">
-        <img src="icon.png" alt="LUXE" class="header__logo-img" width="36" height="36">
+      <a href="#" class="header__logo" id="logoLink">
+        <img src="icon.png" alt="LUXE" class="header__logo-img">
         <span class="header__logo-text">LUXE</span>
       </a>
 
       <nav class="header__nav" id="headerNav">
-        <a href="#shop" class="header__nav-link active" data-page="shop">Shop</a>
-        <a href="#about" class="header__nav-link" data-page="about">About</a>
-        <a href="#contact" class="header__nav-link" data-page="contact">Contact</a>
+        <a href="#shop" class="header__nav-link active" data-nav="shop">Shop</a>
+        <a href="#about" class="header__nav-link" data-nav="about">About</a>
+        <a href="#contact" class="header__nav-link" data-nav="contact">Contact</a>
       </nav>
 
       <div class="header__actions">
@@ -121,7 +121,7 @@
       <span class="hero__tag">New Collection 2026</span>
       <h1 class="hero__title">Curated for the <em>Modern</em> Lifestyle</h1>
       <p class="hero__subtitle">Discover premium products handpicked for quality, style, and sustainability.</p>
-      <a href="#shop" class="hero__cta" data-page="shop">Shop Now
+      <a href="#shop" class="hero__cta" id="heroCTA">Shop Now
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -163,9 +163,7 @@
         <!-- Categories -->
         <div class="sidebar__group">
           <h3 class="sidebar__label">Category</h3>
-          <div class="sidebar__categories" id="categoryFilters">
-            <!-- Rendered by JS -->
-          </div>
+          <div class="sidebar__categories" id="categoryFilters"></div>
         </div>
 
         <!-- Price Range -->
@@ -207,16 +205,12 @@
           </div>
         </div>
         <div class="products__count" id="productsCount"></div>
-        <div class="products__grid" id="productsGrid">
-          <!-- Product cards rendered by JS -->
-        </div>
+        <div class="products__grid" id="productsGrid"></div>
         <div class="products__empty" id="productsEmpty" style="display:none;">
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
             stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            <line x1="8" y1="8" x2="14" y2="14"></line>
-            <line x1="14" y1="8" x2="8" y2="14"></line>
           </svg>
           <h3>No products found</h3>
           <p>Try adjusting your filters or search terms.</p>
@@ -229,11 +223,10 @@
   <section class="page-section" id="aboutSection" style="display: none;">
     <div class="page-section__container">
       <div class="page-hero">
-        <img src="Logo.png" alt="LUXE Logo" class="page-hero__logo" />
+        <img src="icon.png" alt="LUXE Logo" class="page-hero__logo" />
         <h1 class="page-hero__title">About LUXE</h1>
         <p class="page-hero__subtitle">Premium curated products for the modern lifestyle since 2024</p>
       </div>
-
       <div class="about-grid">
         <div class="about-card">
           <div class="about-card__icon">
@@ -248,7 +241,6 @@
             products. We started as a small curated collection and have grown into a trusted destination for premium
             lifestyle goods.</p>
         </div>
-
         <div class="about-card">
           <div class="about-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -260,7 +252,6 @@
           <p>We meticulously curate each product in our collection, ensuring it meets our standards of quality, design,
             and sustainability. Our team hand-selects every item so you can shop with confidence.</p>
         </div>
-
         <div class="about-card">
           <div class="about-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -270,9 +261,8 @@
           </div>
           <h3>Quality Promise</h3>
           <p>Every product at LUXE goes through a rigorous quality check. We partner directly with top artisans and
-            brands worldwide to bring you the finest materials, craftsmanship, and design.</p>
+            brands worldwide to bring you the finest materials and craftsmanship.</p>
         </div>
-
         <div class="about-card">
           <div class="about-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -284,27 +274,18 @@
           </div>
           <h3>Our Team</h3>
           <p>Our diverse team of designers, buyers, and tech enthusiasts work around the clock to discover the next
-            great products and deliver them to you with exceptional service and fast shipping.</p>
+            great products and deliver them to you with exceptional service.</p>
         </div>
       </div>
-
       <div class="about-stats">
-        <div class="about-stat">
-          <span class="about-stat__number">20K+</span>
-          <span class="about-stat__label">Happy Customers</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat__number">500+</span>
-          <span class="about-stat__label">Premium Products</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat__number">50+</span>
-          <span class="about-stat__label">Brand Partners</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat__number">4.9★</span>
-          <span class="about-stat__label">Average Rating</span>
-        </div>
+        <div class="about-stat"><span class="about-stat__number">20K+</span><span class="about-stat__label">Happy
+            Customers</span></div>
+        <div class="about-stat"><span class="about-stat__number">500+</span><span class="about-stat__label">Premium
+            Products</span></div>
+        <div class="about-stat"><span class="about-stat__number">50+</span><span class="about-stat__label">Brand
+            Partners</span></div>
+        <div class="about-stat"><span class="about-stat__number">4.9★</span><span class="about-stat__label">Average
+            Rating</span></div>
       </div>
     </div>
   </section>
@@ -316,7 +297,6 @@
         <h1 class="page-hero__title">Contact Us</h1>
         <p class="page-hero__subtitle">We'd love to hear from you. Reach out anytime!</p>
       </div>
-
       <div class="contact-grid">
         <div class="contact-card">
           <div class="contact-card__icon contact-card__icon--whatsapp">
@@ -326,105 +306,65 @@
             </svg>
           </div>
           <h3>WhatsApp</h3>
-          <p>Chat with us on WhatsApp for quick support and inquiries.</p>
-          <a href="https://wa.me/201019593092" class="contact-card__link" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            +20 101 959 3092
-          </a>
+          <p>Chat with us on WhatsApp for quick support.</p>
+          <a href="https://wa.me/201019593092" class="contact-card__link" target="_blank" rel="noopener">+20 101 959
+            3092</a>
         </div>
-
         <div class="contact-card">
           <div class="contact-card__icon contact-card__icon--phone">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path
                 d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
             </svg>
           </div>
           <h3>Phone Support</h3>
-          <p>Call us directly for immediate assistance and order inquiries.</p>
-          <a href="tel:+201019593092" class="contact-card__link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            +20 101 959 3092
-          </a>
-          <a href="tel:+201101025358" class="contact-card__link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            +20 110 102 5358
-          </a>
+          <p>Call us directly for immediate assistance.</p>
+          <a href="tel:+201019593092" class="contact-card__link">+20 101 959 3092</a>
+          <a href="tel:+201101025358" class="contact-card__link">+20 110 102 5358</a>
         </div>
-
         <div class="contact-card">
           <div class="contact-card__icon contact-card__icon--email">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
           </div>
           <h3>Email</h3>
-          <p>Send us an email and we'll get back to you within 24 hours.</p>
-          <a href="mailto:support@luxe-store.com" class="contact-card__link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            support@luxe-store.com
-          </a>
+          <p>Send us an email — we reply within 24 hours.</p>
+          <a href="mailto:support@luxe-store.com" class="contact-card__link">support@luxe-store.com</a>
         </div>
-
         <div class="contact-card">
           <div class="contact-card__icon contact-card__icon--location">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
           </div>
           <h3>Visit Us</h3>
-          <p>Come say hello at our showroom. We'd love to meet you in person.</p>
+          <p>Come say hello at our showroom.</p>
           <span class="contact-card__address">Cairo, Egypt</span>
         </div>
       </div>
-
-      <!-- Contact Form -->
       <div class="contact-form-wrapper">
         <h2 class="contact-form__title">Send us a Message</h2>
         <form class="contact-form" id="contactForm">
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="contactName">Your Name</label>
+            <div class="form-group"><label class="form-label" for="contactName">Your Name</label>
               <input class="form-input" id="contactName" type="text" placeholder="John Doe" required />
             </div>
-            <div class="form-group">
-              <label class="form-label" for="contactEmail">Your Email</label>
+            <div class="form-group"><label class="form-label" for="contactEmail">Your Email</label>
               <input class="form-input" id="contactEmail" type="email" placeholder="john@example.com" required />
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="contactSubject">Subject</label>
+          <div class="form-group"><label class="form-label" for="contactSubject">Subject</label>
             <input class="form-input" id="contactSubject" type="text" placeholder="How can we help?" required />
           </div>
-          <div class="form-group">
-            <label class="form-label" for="contactMessage">Message</label>
-            <textarea class="form-input form-textarea" id="contactMessage" rows="5"
-              placeholder="Write your message here..." required></textarea>
+          <div class="form-group"><label class="form-label" for="contactMessage">Message</label>
+            <textarea class="form-input form-textarea" id="contactMessage" rows="5" placeholder="Write your message..."
+              required></textarea>
           </div>
           <button type="submit" class="contact-form__submit">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
@@ -435,11 +375,224 @@
     </div>
   </section>
 
+  <!-- ========== HELP CENTER PAGE ========== -->
+  <section class="page-section" id="helpSection" style="display: none;">
+    <div class="page-section__container">
+      <div class="page-hero">
+        <h1 class="page-hero__title">Help Center</h1>
+        <p class="page-hero__subtitle">Find answers to common questions and get the support you need</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary class="faq-item__question">How do I place an order?</summary>
+          <div class="faq-item__answer">
+            <p>Browse our products, add items to your cart, then click "Proceed to Checkout." You'll need to create an
+              account or sign in, fill in your shipping details, and confirm your payment. You'll receive an order
+              confirmation once complete.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">What payment methods do you accept?</summary>
+          <div class="faq-item__answer">
+            <p>We accept all major credit and debit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and
+              Google Pay. All transactions are secured with SSL encryption.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">How long does shipping take?</summary>
+          <div class="faq-item__answer">
+            <p>Standard shipping takes 5-7 business days. Express shipping (2-3 business days) is available for an
+              additional fee. Free shipping is offered on orders over $100. International shipping times vary by
+              destination.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">What is your return policy?</summary>
+          <div class="faq-item__answer">
+            <p>We offer a 30-day hassle-free return policy. Items must be in their original condition with tags
+              attached. Simply contact our support team or initiate a return from your account dashboard. Refunds are
+              processed within 5-7 business days.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">How do I track my order?</summary>
+          <div class="faq-item__answer">
+            <p>Once your order ships, you'll receive a tracking number via email. You can also check the status in your
+              account under "My Orders." Our tracking system provides real-time updates on your delivery.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">Can I change or cancel my order?</summary>
+          <div class="faq-item__answer">
+            <p>You can modify or cancel your order within 1 hour of placing it. After that, the order enters processing
+              and cannot be changed. Contact our support team immediately if you need to make changes.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">Do you ship internationally?</summary>
+          <div class="faq-item__answer">
+            <p>Yes! We ship to over 50 countries worldwide. International shipping rates and delivery times vary by
+              location. Import duties and taxes may apply depending on your country's regulations.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">How do I contact customer support?</summary>
+          <div class="faq-item__answer">
+            <p>You can reach us via WhatsApp at +20 101 959 3092, call us at +20 110 102 5358, or email
+              support@luxe-store.com. Our team is available 24/7 to assist you with any questions or concerns.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CAREERS PAGE ========== -->
+  <section class="page-section" id="careersSection" style="display: none;">
+    <div class="page-section__container">
+      <div class="page-hero">
+        <h1 class="page-hero__title">Careers at LUXE</h1>
+        <p class="page-hero__subtitle">Join our team and help shape the future of premium e-commerce</p>
+      </div>
+      <div class="careers-intro">
+        <p>At LUXE, we're building something special — a destination where quality meets design. We're always looking
+          for passionate, creative individuals who want to make a difference. Our team values innovation, collaboration,
+          and a commitment to excellence.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+            </svg>
+          </div>
+          <h3>Senior Frontend Developer</h3>
+          <p>Build beautiful, performant interfaces with modern JavaScript. Experience with ES6+, CSS architecture, and
+            responsive design required. Remote-friendly position.</p>
+          <span class="career-tag">Engineering · Full-time · Remote</span>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 19l7-7 3 3-7 7-3-3z" />
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+              <path d="M2 2l7.586 7.586" />
+              <circle cx="11" cy="11" r="2" />
+            </svg>
+          </div>
+          <h3>UI/UX Designer</h3>
+          <p>Design premium shopping experiences that delight customers. Proficiency in Figma, prototyping, and user
+            research. Portfolio required.</p>
+          <span class="career-tag">Design · Full-time · Hybrid</span>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+              <circle cx="8.5" cy="7" r="4" />
+              <line x1="20" y1="8" x2="20" y2="14" />
+              <line x1="23" y1="11" x2="17" y2="11" />
+            </svg>
+          </div>
+          <h3>Product Manager</h3>
+          <p>Lead product strategy and roadmap for our e-commerce platform. 3+ years of product management experience in
+            tech/retail required.</p>
+          <span class="career-tag">Product · Full-time · On-site</span>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+            </svg>
+          </div>
+          <h3>Customer Success Lead</h3>
+          <p>Own the customer experience from first order to lifelong loyalty. Strong communication skills and empathy
+            for customers essential.</p>
+          <span class="career-tag">Support · Full-time · Remote</span>
+        </div>
+      </div>
+      <div class="careers-cta">
+        <p>Don't see your perfect role? We're always open to hearing from talented people.</p>
+        <a href="#contact" class="careers-cta__btn" data-nav="contact">Get in Touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BLOG PAGE ========== -->
+  <section class="page-section" id="blogSection" style="display: none;">
+    <div class="page-section__container">
+      <div class="page-hero">
+        <h1 class="page-hero__title">LUXE Blog</h1>
+        <p class="page-hero__subtitle">Style guides, product stories, and curated inspiration</p>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-card__image" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);"></div>
+          <div class="blog-card__content">
+            <span class="blog-card__tag">Style Guide</span>
+            <h3 class="blog-card__title">10 Essential Accessories Every Wardrobe Needs</h3>
+            <p class="blog-card__excerpt">From timeless watches to versatile bags, discover the accessories that elevate
+              any outfit from ordinary to extraordinary.</p>
+            <div class="blog-card__meta"><span>Feb 20, 2026</span><span>5 min read</span></div>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card__image" style="background: linear-gradient(135deg, #00cec9, #81ecec);"></div>
+          <div class="blog-card__content">
+            <span class="blog-card__tag">Home & Living</span>
+            <h3 class="blog-card__title">Scandinavian Minimalism: A Guide to Clean Spaces</h3>
+            <p class="blog-card__excerpt">Learn how to transform your home with principles of Scandinavian design — less
+              clutter, more beauty, and intentional living.</p>
+            <div class="blog-card__meta"><span>Feb 15, 2026</span><span>7 min read</span></div>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card__image" style="background: linear-gradient(135deg, #fd79a8, #e84393);"></div>
+          <div class="blog-card__content">
+            <span class="blog-card__tag">Product Spotlight</span>
+            <h3 class="blog-card__title">Behind the Craft: Our Artisan Ceramic Collection</h3>
+            <p class="blog-card__excerpt">Meet the artisans behind our best-selling ceramic vases and learn about the
+              centuries-old techniques that make each piece unique.</p>
+            <div class="blog-card__meta"><span>Feb 10, 2026</span><span>6 min read</span></div>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card__image" style="background: linear-gradient(135deg, #fdcb6e, #e17055);"></div>
+          <div class="blog-card__content">
+            <span class="blog-card__tag">Tech Reviews</span>
+            <h3 class="blog-card__title">2026's Best Noise-Cancelling Headphones Compared</h3>
+            <p class="blog-card__excerpt">We tested the top 5 wireless headphones on the market. Here's our honest take
+              on sound quality, comfort, and value for money.</p>
+            <div class="blog-card__meta"><span>Feb 5, 2026</span><span>8 min read</span></div>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card__image" style="background: linear-gradient(135deg, #55efc4, #00b894);"></div>
+          <div class="blog-card__content">
+            <span class="blog-card__tag">Sustainability</span>
+            <h3 class="blog-card__title">Our Journey to Eco-Friendly Packaging</h3>
+            <p class="blog-card__excerpt">How LUXE eliminated 90% of plastic from our supply chain and what it means for
+              our planet and your purchases.</p>
+            <div class="blog-card__meta"><span>Jan 28, 2026</span><span>4 min read</span></div>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card__image" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);"></div>
+          <div class="blog-card__content">
+            <span class="blog-card__tag">Fashion</span>
+            <h3 class="blog-card__title">Merino Wool: Why It's the King of Fabrics</h3>
+            <p class="blog-card__excerpt">Discover why merino wool has been the go-to fabric for premium clothing —
+              temperature regulation, odor resistance, and unmatched softness.</p>
+            <div class="blog-card__meta"><span>Jan 22, 2026</span><span>5 min read</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== CHECKOUT SECTION ========== -->
   <section class="checkout" id="checkoutSection" style="display: none;">
-    <div class="checkout__container" id="checkoutContainer">
-      <!-- Rendered by JS -->
-    </div>
+    <div class="checkout__container" id="checkoutContainer"></div>
   </section>
 
   <!-- ========== CART DRAWER ========== -->
@@ -463,9 +616,7 @@
         </svg>
       </button>
     </div>
-    <div class="cart-drawer__items" id="cartItems">
-      <!-- Rendered by JS -->
-    </div>
+    <div class="cart-drawer__items" id="cartItems"></div>
     <div class="cart-drawer__empty" id="cartEmpty">
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
         stroke-linecap="round" stroke-linejoin="round">
@@ -478,21 +629,11 @@
     </div>
     <div class="cart-drawer__footer" id="cartFooter" style="display:none;">
       <div class="cart-drawer__summary">
-        <div class="cart-drawer__row">
-          <span>Subtotal</span>
-          <span id="cartSubtotal">$0.00</span>
-        </div>
-        <div class="cart-drawer__row">
-          <span>Tax (8%)</span>
-          <span id="cartTax">$0.00</span>
-        </div>
-        <div class="cart-drawer__row cart-drawer__row--total">
-          <span>Total</span>
-          <span id="cartTotal">$0.00</span>
-        </div>
+        <div class="cart-drawer__row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+        <div class="cart-drawer__row"><span>Tax (8%)</span><span id="cartTax">$0.00</span></div>
+        <div class="cart-drawer__row cart-drawer__row--total"><span>Total</span><span id="cartTotal">$0.00</span></div>
       </div>
-      <button class="cart-drawer__checkout-btn" id="checkoutBtn">
-        Proceed to Checkout
+      <button class="cart-drawer__checkout-btn" id="checkoutBtn">Proceed to Checkout
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -512,9 +653,7 @@
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
-    <div class="modal__body" id="modalBody">
-      <!-- Rendered by JS -->
-    </div>
+    <div class="modal__body" id="modalBody"></div>
   </div>
 
   <!-- ========== AUTH MODAL ========== -->
@@ -529,7 +668,7 @@
         </svg>
       </button>
       <div class="auth-modal__logo">
-        <img src="icon.png" alt="LUXE" width="32" height="32" style="vertical-align:middle;margin-right:8px"> LUXE
+        <img src="icon.png" alt="LUXE" class="auth-modal__logo-img"> LUXE
       </div>
       <p class="auth-modal__subtitle">Sign in to your account</p>
     </div>
@@ -538,48 +677,30 @@
       <button class="auth-modal__tab" data-auth-tab="register">Create Account</button>
     </div>
     <div class="auth-modal__body">
-      <!-- Login Form -->
       <form class="auth-form active" id="loginForm">
         <div class="auth-form__error" id="loginError"></div>
-        <div class="form-group">
-          <label class="form-label" for="loginEmail">Email</label>
-          <input class="form-input" id="loginEmail" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="loginPassword">Password</label>
-          <input class="form-input" id="loginPassword" type="password" placeholder="••••••••" required />
-        </div>
+        <div class="form-group"><label class="form-label" for="loginEmail">Email</label><input class="form-input"
+            id="loginEmail" type="email" placeholder="you@example.com" required /></div>
+        <div class="form-group"><label class="form-label" for="loginPassword">Password</label><input class="form-input"
+            id="loginPassword" type="password" placeholder="••••••••" required /></div>
         <button type="submit" class="auth-form__submit">
-          <div class="spinner"></div>
-          <span class="btn-text">Sign In</span>
+          <div class="spinner"></div><span class="btn-text">Sign In</span>
         </button>
       </form>
-      <!-- Register Form -->
       <form class="auth-form" id="registerForm">
         <div class="auth-form__error" id="registerError"></div>
-        <div class="form-group">
-          <label class="form-label" for="regName">Full Name</label>
-          <input class="form-input" id="regName" type="text" placeholder="John Doe" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="regEmail">Email</label>
-          <input class="form-input" id="regEmail" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="regPhone">Phone (optional)</label>
-          <input class="form-input" id="regPhone" type="tel" placeholder="(555) 123-4567" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="regPassword">Password</label>
-          <input class="form-input" id="regPassword" type="password" placeholder="Min 6 characters" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="regConfirm">Confirm Password</label>
-          <input class="form-input" id="regConfirm" type="password" placeholder="••••••••" required />
-        </div>
+        <div class="form-group"><label class="form-label" for="regName">Full Name</label><input class="form-input"
+            id="regName" type="text" placeholder="John Doe" required /></div>
+        <div class="form-group"><label class="form-label" for="regEmail">Email</label><input class="form-input"
+            id="regEmail" type="email" placeholder="you@example.com" required /></div>
+        <div class="form-group"><label class="form-label" for="regPhone">Phone (optional)</label><input
+            class="form-input" id="regPhone" type="tel" placeholder="(555) 123-4567" /></div>
+        <div class="form-group"><label class="form-label" for="regPassword">Password</label><input class="form-input"
+            id="regPassword" type="password" placeholder="Min 6 characters" required /></div>
+        <div class="form-group"><label class="form-label" for="regConfirm">Confirm Password</label><input
+            class="form-input" id="regConfirm" type="password" placeholder="••••••••" required /></div>
         <button type="submit" class="auth-form__submit">
-          <div class="spinner"></div>
-          <span class="btn-text">Create Account</span>
+          <div class="spinner"></div><span class="btn-text">Create Account</span>
         </button>
       </form>
     </div>
@@ -645,7 +766,7 @@
     </div>
   </div>
 
-  <!-- ========== TOAST NOTIFICATIONS ========== -->
+  <!-- ========== TOAST ========== -->
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- ========== FOOTER ========== -->
@@ -653,8 +774,8 @@
     <div class="footer__container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="#" class="footer__logo" data-page="shop">
-            <img src="icon.png" alt="LUXE" class="footer__logo-img" width="32" height="32">
+          <a href="#" class="footer__logo" id="footerLogoLink">
+            <img src="Logo.png" alt="LUXE" class="footer__logo-img">
             <span class="footer__logo-text">LUXE</span>
           </a>
           <p class="footer__tagline">Premium curated products for the modern lifestyle.</p>
@@ -666,60 +787,49 @@
               </svg>
               WhatsApp
             </a>
-            <a href="tel:+201019593092" class="footer__contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-              </svg>
-              +20 101 959 3092
-            </a>
+            <a href="tel:+201019593092" class="footer__contact-link">📞 +20 101 959 3092</a>
           </div>
         </div>
         <div class="footer__links">
           <h4>Shop</h4>
-          <a href="#" data-category="Electronics">Electronics</a>
-          <a href="#" data-category="Clothing">Clothing</a>
-          <a href="#" data-category="Home">Home</a>
-          <a href="#" data-category="Accessories">Accessories</a>
+          <a href="#" data-nav="shop" data-category="Electronics">Electronics</a>
+          <a href="#" data-nav="shop" data-category="Clothing">Clothing</a>
+          <a href="#" data-nav="shop" data-category="Home">Home</a>
+          <a href="#" data-nav="shop" data-category="Accessories">Accessories</a>
         </div>
         <div class="footer__links">
           <h4>Company</h4>
-          <a href="#about" data-page="about">About Us</a>
-          <a href="#contact" data-page="contact">Contact</a>
-          <a href="#">Careers</a>
-          <a href="#">Blog</a>
+          <a href="#about" data-nav="about">About Us</a>
+          <a href="#careers" data-nav="careers">Careers</a>
+          <a href="#blog" data-nav="blog">Blog</a>
+          <a href="#contact" data-nav="contact">Contact</a>
         </div>
         <div class="footer__links">
           <h4>Support</h4>
-          <a href="#">Help Center</a>
-          <a href="#">Returns & Exchanges</a>
-          <a href="#">Shipping Info</a>
-          <a href="#">Privacy Policy</a>
+          <a href="#help" data-nav="help">Help Center</a>
+          <a href="#help" data-nav="help">Returns & Exchanges</a>
+          <a href="#help" data-nav="help">Shipping Info</a>
+          <a href="#contact" data-nav="contact">Contact Support</a>
         </div>
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 LUXE. All rights reserved.</p>
         <div class="footer__social">
-          <a href="#" aria-label="Twitter">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-          <a href="#" aria-label="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            </svg></a>
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
-          <a href="https://wa.me/201019593092" aria-label="WhatsApp" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            </svg></a>
+          <a href="https://wa.me/201019593092" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-          </a>
+            </svg></a>
         </div>
       </div>
     </div>

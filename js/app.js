@@ -14,11 +14,57 @@ import { initAuth } from './components/auth.js';
 import { initLocation } from './components/location.js';
 import { $, debounce, showToast } from './utils/helpers.js';
 
+// All page section IDs
+const PAGE_MAP = {
+    shop: { sections: ['heroBanner', 'shopSection'], showFooter: true },
+    about: { sections: ['aboutSection'], showFooter: true },
+    contact: { sections: ['contactSection'], showFooter: true },
+    help: { sections: ['helpSection'], showFooter: true },
+    careers: { sections: ['careersSection'], showFooter: true },
+    blog: { sections: ['blogSection'], showFooter: true },
+    checkout: { sections: ['checkoutSection'], showFooter: false },
+};
+
+const ALL_SECTION_IDS = [
+    'heroBanner', 'shopSection', 'aboutSection', 'contactSection',
+    'helpSection', 'careersSection', 'blogSection', 'checkoutSection'
+];
+
+/**
+ * Show the correct page sections
+ */
+function showPage(page) {
+    const config = PAGE_MAP[page] || PAGE_MAP.shop;
+
+    // Hide all sections
+    ALL_SECTION_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
+    // Show target sections
+    config.sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            // Hero uses flex, everything else block
+            el.style.display = id === 'heroBanner' ? 'flex' : 'block';
+        }
+    });
+
+    // Footer
+    const footer = document.getElementById('footer');
+    if (footer) footer.style.display = config.showFooter ? 'block' : 'none';
+
+    // Update active nav link
+    document.querySelectorAll('.header__nav-link').forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector(`.header__nav-link[data-nav="${page}"]`);
+    if (activeLink) activeLink.classList.add('active');
+}
+
 /**
  * Bootstrap the application
  */
 async function init() {
-    // Show loading state
     showSkeletons();
 
     // Initialize all components
@@ -29,28 +75,27 @@ async function init() {
     initAuth();
     initLocation();
 
-    // Initialize theme
+    // Theme
     initTheme();
 
-    // Initialize page navigation
-    initPageNavigation();
+    // Navigation
+    initNavigation();
 
-    // Initialize header search
+    // Header search
     initHeaderSearch();
 
-    // Initialize contact form
+    // Contact form
     initContactForm();
 
-    // Fetch product data
+    // Fetch products
     await fetchProducts();
 
-    // Initialize filters (needs products loaded first)
+    // Filters and product list
     initFilters();
-
-    // Initialize product list subscriber
     initProductList();
 
-    // Initial render
+    // Show initial page
+    showPage('shop');
     renderProducts();
 
     console.log('🛍️ LUXE E-Commerce initialized');
@@ -65,7 +110,7 @@ function initTheme() {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
 
-    const toggleBtn = $('#themeToggle');
+    const toggleBtn = document.getElementById('themeToggle');
     if (toggleBtn) {
         toggleBtn.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme');
@@ -77,56 +122,63 @@ function initTheme() {
 }
 
 /**
- * SPA-like page navigation
+ * Navigation via [data-nav] attributes
  */
-function initPageNavigation() {
-    // Handle all [data-page] clicks
+function initNavigation() {
     document.addEventListener('click', (e) => {
-        const link = e.target.closest('[data-page]');
+        const link = e.target.closest('[data-nav]');
         if (!link) return;
         e.preventDefault();
-        const page = link.dataset.page;
+
+        const page = link.dataset.nav;
+
+        // Navigate
         dispatch({ type: 'SET_PAGE', payload: page });
+        showPage(page);
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Update active nav
-        document.querySelectorAll('.header__nav-link').forEach(l => l.classList.remove('active'));
-        const activeLink = document.querySelector(`.header__nav-link[data-page="${page}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        // Close mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('headerNav');
+        if (menuToggle) menuToggle.classList.remove('active');
+        if (nav) nav.classList.remove('mobile-open');
     });
 
-    // Page visibility subscriber
+    // Logo clicks go to shop
+    const logoLink = document.getElementById('logoLink');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            dispatch({ type: 'SET_PAGE', payload: 'shop' });
+            showPage('shop');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    const footerLogo = document.getElementById('footerLogoLink');
+    if (footerLogo) {
+        footerLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            dispatch({ type: 'SET_PAGE', payload: 'shop' });
+            showPage('shop');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Hero CTA
+    const heroCTA = document.getElementById('heroCTA');
+    if (heroCTA) {
+        heroCTA.addEventListener('click', (e) => {
+            e.preventDefault();
+            const shopSection = document.getElementById('shopSection');
+            if (shopSection) shopSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Subscribe for checkout navigation
     subscribe((state) => {
-        const shopEl = $('#shopSection');
-        const heroEl = $('#heroBanner');
-        const aboutEl = $('#aboutSection');
-        const contactEl = $('#contactSection');
-        const checkoutEl = $('#checkoutSection');
-        const footerEl = $('#footer');
-
-        const page = state.currentPage;
-
-        // Hide all
-        shopEl.style.display = 'none';
-        heroEl.style.display = 'none';
-        aboutEl.style.display = 'none';
-        contactEl.style.display = 'none';
-        checkoutEl.style.display = 'none';
-
-        // Show relevant
-        if (page === 'shop') {
-            shopEl.style.display = 'block';
-            heroEl.style.display = 'flex';
-            footerEl.style.display = 'block';
-        } else if (page === 'about') {
-            aboutEl.style.display = 'block';
-            footerEl.style.display = 'block';
-        } else if (page === 'contact') {
-            contactEl.style.display = 'block';
-            footerEl.style.display = 'block';
-        } else if (page === 'checkout') {
-            checkoutEl.style.display = 'block';
-            footerEl.style.display = 'none';
+        if (state.currentPage === 'checkout') {
+            showPage('checkout');
         }
     });
 }
@@ -135,17 +187,18 @@ function initPageNavigation() {
  * Header search bar syncs with sidebar search
  */
 function initHeaderSearch() {
-    const headerInput = $('#headerSearchInput');
-    const sidebarInput = $('#searchInput');
+    const headerInput = document.getElementById('headerSearchInput');
+    const sidebarInput = document.getElementById('searchInput');
 
     if (headerInput) {
         const debouncedSearch = debounce((val) => {
             dispatch({ type: 'SET_SEARCH', payload: val });
-            // Sync sidebar if visible
             if (sidebarInput) sidebarInput.value = val;
-            // Make sure we're on shop page
-            if (val && getState().currentPage !== 'shop') {
+            // Navigate to shop if searching from another page
+            const { currentPage } = getState();
+            if (val && currentPage !== 'shop') {
                 dispatch({ type: 'SET_PAGE', payload: 'shop' });
+                showPage('shop');
             }
         }, 300);
 
@@ -156,10 +209,10 @@ function initHeaderSearch() {
 }
 
 /**
- * Contact form handler
+ * Contact form
  */
 function initContactForm() {
-    const form = $('#contactForm');
+    const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
