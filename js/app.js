@@ -12,6 +12,9 @@ import { initQuickView } from './components/quickView.js';
 import { initCheckout } from './components/checkout.js';
 import { initAuth } from './components/auth.js';
 import { initLocation } from './components/location.js';
+import { initErrorBoundary } from './components/error.js';
+import { initLoading, showLoading, hideLoading } from './components/loading.js';
+import { initBlog, setBlogNavigation } from './components/blog.js';
 import { $, debounce, showToast } from './utils/helpers.js';
 
 // All page section IDs
@@ -22,12 +25,16 @@ const PAGE_MAP = {
     help: { sections: ['helpSection'], showFooter: true },
     careers: { sections: ['careersSection'], showFooter: true },
     blog: { sections: ['blogSection'], showFooter: true },
+    blogArticle: { sections: ['blogArticleSection'], showFooter: true },
+    privacy: { sections: ['privacySection'], showFooter: true },
+    terms: { sections: ['termsSection'], showFooter: true },
     checkout: { sections: ['checkoutSection'], showFooter: false },
 };
 
 const ALL_SECTION_IDS = [
     'heroBanner', 'shopSection', 'aboutSection', 'contactSection',
-    'helpSection', 'careersSection', 'blogSection', 'checkoutSection'
+    'helpSection', 'careersSection', 'blogSection', 'blogArticleSection',
+    'privacySection', 'termsSection', 'checkoutSection'
 ];
 
 /**
@@ -65,6 +72,11 @@ function showPage(page) {
  * Bootstrap the application
  */
 async function init() {
+    // Initialize loading & error immediately (before anything can fail)
+    initLoading();
+    initErrorBoundary();
+    showLoading();
+
     showSkeletons();
 
     // Initialize all components
@@ -87,6 +99,10 @@ async function init() {
     // Contact form
     initContactForm();
 
+    // Blog — pass showPage so blog.js can navigate without circular imports
+    setBlogNavigation(showPage);
+    await initBlog();
+
     // Fetch products
     await fetchProducts();
 
@@ -97,6 +113,9 @@ async function init() {
     // Show initial page
     showPage('shop');
     renderProducts();
+
+    // Hide loading overlay
+    hideLoading();
 
     console.log('🛍️ LUXE E-Commerce initialized');
 }

@@ -1,0 +1,179 @@
+/* ==============================
+   LOADING COMPONENT
+   ============================== */
+
+/* ── Full-Page Loading Overlay ── */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ── Logo Pulse ── */
+.loading__logo {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-md);
+    object-fit: contain;
+    animation: loadingPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 20px rgba(var(--color-primary-rgb), 0.3));
+    margin-bottom: var(--space-8);
+}
+
+/* ── Orbit Dots ── */
+.loading__orbit {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--space-6);
+}
+
+.loading__orbit-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--color-primary);
+    animation: loadingSpin 1.2s linear infinite;
+}
+
+.loading__orbit-ring:nth-child(2) {
+    inset: 10px;
+    border-top-color: var(--color-primary-light);
+    animation-duration: 1.8s;
+    animation-direction: reverse;
+}
+
+.loading__orbit-ring:nth-child(3) {
+    inset: 20px;
+    border-top-color: var(--color-accent);
+    animation-duration: 2.5s;
+}
+
+.loading__logo-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    object-fit: contain;
+    animation: loadingPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 2px 12px rgba(var(--color-primary-rgb), 0.25));
+}
+
+/* ── Loading Text ── */
+.loading__text {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: loadingTextFade 2s ease-in-out infinite;
+}
+
+/* ── Progress Bar (optional) ── */
+.loading__progress {
+    width: 200px;
+    height: 3px;
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+    margin-top: var(--space-6);
+    overflow: hidden;
+}
+
+.loading__progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+    background-size: 200% 100%;
+    border-radius: var(--radius-full);
+    animation: loadingProgress 1.5s ease-in-out infinite;
+}
+
+/* ── Inline Loading (for sections) ── */
+.loading-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-16) var(--space-4);
+    min-height: 300px;
+}
+
+.loading-inline .loading__orbit {
+    width: 80px;
+    height: 80px;
+}
+
+.loading-inline .loading__logo-center {
+    width: 32px;
+    height: 32px;
+}
+
+/* ── Animations ── */
+@keyframes loadingPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.7;
+    }
+}
+
+@keyframes loadingSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loadingTextFade {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes loadingProgress {
+    0% {
+        width: 0%;
+        background-position: 0% 0;
+    }
+
+    50% {
+        width: 70%;
+    }
+
+    100% {
+        width: 100%;
+        background-position: 200% 0;
+    }
+}

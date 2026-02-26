@@ -36,11 +36,78 @@
   <link rel="stylesheet" href="css/components/auth.css">
   <link rel="stylesheet" href="css/components/location.css">
   <link rel="stylesheet" href="css/components/pages.css">
+  <link rel="stylesheet" href="css/components/error.css">
+  <link rel="stylesheet" href="css/components/loading.css">
+  <link rel="stylesheet" href="css/components/blog-article.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
+
+  <!-- ========== LOADING OVERLAY ========== -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading__orbit">
+      <div class="loading__orbit-ring"></div>
+      <div class="loading__orbit-ring"></div>
+      <div class="loading__orbit-ring"></div>
+      <img src="icon.png" alt="LUXE" class="loading__logo-center" />
+    </div>
+    <span class="loading__text">Loading</span>
+    <div class="loading__progress">
+      <div class="loading__progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- ========== ERROR PAGE ========== -->
+  <div class="error-page" id="errorPage">
+    <div class="error-page__container">
+      <div class="error-page__illustration">
+        <div class="error-page__circle"></div>
+        <div class="error-page__particle"></div>
+        <div class="error-page__particle"></div>
+        <div class="error-page__particle"></div>
+        <div class="error-page__particle"></div>
+        <svg class="error-page__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <div class="error-page__code">OOPS!</div>
+      <h1 class="error-page__title">Something went wrong</h1>
+      <p class="error-page__description">An unexpected error occurred. Our team has been notified. Please try refreshing
+        the page.</p>
+      <div class="error-page__actions">
+        <button class="error-page__btn error-page__btn--primary" id="errorHomeBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Go Home
+        </button>
+        <button class="error-page__btn error-page__btn--secondary" id="errorRefreshBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path>
+          </svg>
+          Refresh Page
+        </button>
+      </div>
+      <details class="error-page__details">
+        <summary>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"></path>
+            <polyline points="13 2 13 9 20 9"></polyline>
+          </svg>
+          View Error Details
+        </summary>
+        <div class="error-page__details-content">No details available.</div>
+      </details>
+    </div>
+  </div>
+
 
   <!-- ========== HEADER ========== -->
   <header class="header" id="header">
@@ -590,6 +657,138 @@
     </div>
   </section>
 
+  <!-- ========== BLOG ARTICLE DETAIL ========== -->
+  <section class="page-section" id="blogArticleSection" style="display: none; padding: 0;">
+    <!-- Content injected dynamically by blog.js -->
+  </section>
+
+  <!-- ========== PRIVACY POLICY ========== -->
+  <section class="page-section" id="privacySection" style="display: none;">
+    <div class="page-section__container">
+      <div class="page-hero">
+        <h1 class="page-hero__title">Privacy Policy</h1>
+        <p class="page-hero__subtitle">How we collect, use, and protect your information</p>
+      </div>
+      <div class="legal-page">
+        <span class="legal-page__updated">Last updated: February 2026</span>
+        <div class="legal-section">
+          <h2 class="legal-section__title">1. Information We Collect</h2>
+          <p>We collect information you provide directly to us when you create an account, make a purchase, or contact
+            our support team. This includes:</p>
+          <ul>
+            <li>Name, email address, and phone number</li>
+            <li>Shipping and billing addresses</li>
+            <li>Payment information (processed securely via our payment provider)</li>
+            <li>Order history and product preferences</li>
+            <li>Communications with our support team</li>
+          </ul>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">2. How We Use Your Information</h2>
+          <p>We use the information we collect to provide, maintain, and improve our services, including:</p>
+          <ul>
+            <li>Processing and fulfilling your orders</li>
+            <li>Sending order confirmations and shipping updates</li>
+            <li>Providing customer support and responding to inquiries</li>
+            <li>Personalizing your shopping experience</li>
+            <li>Sending promotional communications (with your consent)</li>
+            <li>Detecting and preventing fraud</li>
+          </ul>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">3. Information Sharing</h2>
+          <p>We do not sell, trade, or rent your personal information to third parties. We may share your information
+            only with trusted service providers who assist us in operating our platform, processing payments, and
+            delivering orders — and only to the extent necessary for them to perform these services.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">4. Data Security</h2>
+          <p>We implement industry-standard security measures to protect your personal data, including SSL encryption
+            for all data transmission, secure payment processing, and regular security audits. However, no method of
+            transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">5. Your Rights</h2>
+          <p>You have the right to access, update, or delete your personal information at any time. You can manage your
+            data through your account settings or by contacting our support team. You may also opt out of promotional
+            communications at any time.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">6. Cookies</h2>
+          <p>We use cookies and similar technologies to enhance your browsing experience, analyze site traffic, and
+            personalize content. You can control cookie preferences through your browser settings. Essential cookies
+            required for site functionality cannot be disabled.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">7. Contact Us</h2>
+          <p>If you have any questions about this Privacy Policy or our data practices, please contact us at <a
+              href="mailto:privacy@luxe-store.com" style="color: var(--color-primary);">privacy@luxe-store.com</a> or
+            through our Contact page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TERMS OF SERVICE ========== -->
+  <section class="page-section" id="termsSection" style="display: none;">
+    <div class="page-section__container">
+      <div class="page-hero">
+        <h1 class="page-hero__title">Terms of Service</h1>
+        <p class="page-hero__subtitle">Please read these terms carefully before using our services</p>
+      </div>
+      <div class="legal-page">
+        <span class="legal-page__updated">Last updated: February 2026</span>
+        <div class="legal-section">
+          <h2 class="legal-section__title">1. Acceptance of Terms</h2>
+          <p>By accessing or using the LUXE website and services, you agree to be bound by these Terms of Service. If
+            you do not agree to these terms, please do not use our services. We reserve the right to update these terms
+            at any time, and continued use of our platform constitutes acceptance of any changes.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">2. Account Registration</h2>
+          <p>To make a purchase, you may need to create an account. You are responsible for maintaining the
+            confidentiality of your account credentials and for all activities under your account. You must provide
+            accurate, complete information and update it as needed.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">3. Orders & Payments</h2>
+          <p>All orders are subject to availability and confirmation. Prices are displayed in USD and include applicable
+            taxes where required. We reserve the right to refuse or cancel any order for any reason, including suspected
+            fraud. Payment is processed securely through our third-party payment providers.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">4. Shipping & Delivery</h2>
+          <p>Shipping times and costs vary by location and selected shipping method. Estimated delivery times are not
+            guaranteed and may be affected by factors beyond our control. Risk of loss and title for items pass to you
+            upon delivery to the carrier.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">5. Returns & Refunds</h2>
+          <p>We offer a 30-day return policy for items in their original condition with tags attached. Refunds are
+            processed within 5–7 business days after we receive the returned item. Shipping costs for returns are the
+            responsibility of the customer unless the item is defective or incorrect.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">6. Intellectual Property</h2>
+          <p>All content on the LUXE website — including text, images, logos, and design — is the property of LUXE and
+            is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works
+            without our explicit written permission.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">7. Limitation of Liability</h2>
+          <p>LUXE shall not be liable for any indirect, incidental, special, or consequential damages arising from the
+            use or inability to use our services. Our total liability for any claim shall not exceed the amount paid by
+            you for the applicable product or service.</p>
+        </div>
+        <div class="legal-section">
+          <h2 class="legal-section__title">8. Contact</h2>
+          <p>For questions about these Terms of Service, please contact us at <a href="mailto:legal@luxe-store.com"
+              style="color: var(--color-primary);">legal@luxe-store.com</a> or through our Contact page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== CHECKOUT SECTION ========== -->
   <section class="checkout" id="checkoutSection" style="display: none;">
     <div class="checkout__container" id="checkoutContainer"></div>
@@ -815,8 +1014,8 @@
           <h4>Support</h4>
           <a href="#help" data-nav="help">Help Center</a>
           <a href="#help" data-nav="help">Returns & Exchanges</a>
-          <a href="#help" data-nav="help">Shipping Info</a>
-          <a href="#contact" data-nav="contact">Contact Support</a>
+          <a href="#privacy" data-nav="privacy">Privacy Policy</a>
+          <a href="#terms" data-nav="terms">Terms of Service</a>
         </div>
       </div>
       <div class="footer__bottom">
