@@ -1,31 +1,44 @@
 // ==============================
-// AUTH — Login/Register Modal
+// AUTH — Full Page Login/Register
 // ==============================
 
 import { dispatch, subscribe, getState } from '../store.js';
 import { $, showToast } from '../utils/helpers.js';
 import * as api from '../api-client.js';
 
-/** Open auth modal */
-export function openAuthModal() {
-    $('#authModal').classList.add('active');
-    $('#authOverlay').classList.add('active');
-    document.body.classList.add('no-scroll');
+let showPageFn = null;
+
+/** Set the showPage callback to avoid circular imports */
+export function setAuthNavigation(fn) {
+    showPageFn = fn;
 }
 
-/** Close auth modal */
+/** Navigate to auth page */
+export function openAuthModal() {
+    dispatch({ type: 'SET_PAGE', payload: 'auth' });
+    if (showPageFn) showPageFn('auth');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/** Navigate back to shop */
 export function closeAuthModal() {
-    $('#authModal').classList.remove('active');
-    $('#authOverlay').classList.remove('active');
-    document.body.classList.remove('no-scroll');
+    dispatch({ type: 'SET_PAGE', payload: 'shop' });
+    if (showPageFn) showPageFn('shop');
 }
 
 /** Switch tabs */
 function switchTab(tab) {
-    document.querySelectorAll('.auth-modal__tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-page__tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
-    document.querySelector(`[data-auth-tab="${tab}"]`).classList.add('active');
-    document.getElementById(tab === 'login' ? 'loginForm' : 'registerForm').classList.add('active');
+    document.querySelector(`[data-auth-tab="${tab}"]`)?.classList.add('active');
+    document.getElementById(tab === 'login' ? 'loginForm' : 'registerForm')?.classList.add('active');
+
+    // Update subtitle
+    const subtitle = document.getElementById('authSubtitle');
+    if (subtitle) {
+        subtitle.textContent = tab === 'login' ? 'Sign in to your account' : 'Create your account';
+    }
+
     // Clear errors
     document.querySelectorAll('.auth-form__error').forEach(e => {
         e.classList.remove('visible');
@@ -37,7 +50,7 @@ function switchTab(tab) {
 function showFormError(formId, message) {
     const errorEl = document.querySelector(`#${formId} .auth-form__error`);
     if (errorEl) {
-        errorEl.textContent = message;
+        errorEl.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ${message}`;
         errorEl.classList.add('visible');
     }
 }
@@ -51,6 +64,19 @@ function setLoading(btn, loading) {
         btn.classList.remove('loading');
         btn.disabled = false;
     }
+}
+
+/** Toggle password visibility */
+function initPasswordToggles() {
+    document.querySelectorAll('.password-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.parentElement.querySelector('.form-input');
+            if (!input) return;
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            btn.classList.toggle('visible', isPassword);
+        });
+    });
 }
 
 /** Update header UI based on user state */
@@ -79,11 +105,15 @@ export function updateHeaderUser() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <span>${user.name}</span>
         </div>
-        <div class="header__user-menu-item" style="pointer-events:none; font-size:12px; color:var(--color-gray-400);">
+        <div class="header__user-menu-item" style="pointer-events:none; font-size:12px; color:var(--text-muted);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span>${user.email}</span>
         </div>
-        <div style="height:1px; background:var(--color-gray-200); margin:4px 0;"></div>
+        <div style="height:1px; background:var(--border-color); margin:4px 0;"></div>
+        <button class="header__user-menu-item" id="profileBtn" data-nav="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Profile
+        </button>
         <button class="header__user-menu-item header__user-menu-item--danger" id="logoutBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
           Logout
@@ -103,6 +133,14 @@ export function updateHeaderUser() {
         document.addEventListener('click', () => {
             const menu = document.getElementById('userMenu');
             if (menu) menu.classList.remove('active');
+        });
+
+        // Profile button
+        document.getElementById('profileBtn')?.addEventListener('click', () => {
+            dispatch({ type: 'SET_PAGE', payload: 'profile' });
+            if (showPageFn) showPageFn('profile');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('userMenu')?.classList.remove('active');
         });
 
         // Logout
@@ -126,14 +164,16 @@ export function updateHeaderUser() {
 
 /** Initialize auth */
 export function initAuth() {
-    // Close handlers
-    $('#authModalClose').addEventListener('click', closeAuthModal);
-    $('#authOverlay').addEventListener('click', closeAuthModal);
+    // Back button
+    document.getElementById('authBackBtn')?.addEventListener('click', closeAuthModal);
 
     // Tab switching
-    document.querySelectorAll('.auth-modal__tab').forEach(tab => {
+    document.querySelectorAll('.auth-page__tab').forEach(tab => {
         tab.addEventListener('click', () => switchTab(tab.dataset.authTab));
     });
+
+    // Password toggles
+    initPasswordToggles();
 
     // Login form submit
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -169,6 +209,7 @@ export function initAuth() {
         const phone = document.getElementById('regPhone').value.trim();
         const password = document.getElementById('regPassword').value;
         const confirm = document.getElementById('regConfirm').value;
+        const termsChecked = document.getElementById('regTerms')?.checked;
 
         if (!name || !email || !password) {
             showFormError('registerForm', 'Please fill in all required fields');
@@ -180,6 +221,10 @@ export function initAuth() {
         }
         if (password !== confirm) {
             showFormError('registerForm', 'Passwords do not match');
+            return;
+        }
+        if (!termsChecked) {
+            showFormError('registerForm', 'You must agree to the Terms & Privacy Policy');
             return;
         }
 

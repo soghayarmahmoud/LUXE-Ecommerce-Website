@@ -76,7 +76,7 @@ app.post('/api/auth/register', (req, res) => {
 
         res.status(201).json({
             token,
-            user: { id: result.lastInsertRowid, name, email, phone: phone || '' }
+            user: { id: result.lastInsertRowid, name, email, phone: phone || '', address: '' }
         });
     } catch (err) {
         console.error('Register error:', err);
@@ -114,7 +114,7 @@ app.post('/api/auth/login', (req, res) => {
 
         res.json({
             token,
-            user: { id: user.id, name: user.name, email: user.email, phone: user.phone }
+            user: { id: user.id, name: user.name, email: user.email, phone: user.phone, address: user.address || '' }
         });
     } catch (err) {
         console.error('Login error:', err);
@@ -125,13 +125,39 @@ app.post('/api/auth/login', (req, res) => {
 // Get current user
 app.get('/api/auth/me', authMiddleware, (req, res) => {
     try {
-        const user = db.prepare('SELECT id, name, email, phone, created_at FROM users WHERE id = ?').get(req.user.id);
+        const user = db.prepare('SELECT id, name, email, phone, address, created_at FROM users WHERE id = ?').get(req.user.id);
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
         res.json({ user });
     } catch (err) {
         console.error('Get user error:', err);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// Update profile
+app.put('/api/auth/profile', authMiddleware, (req, res) => {
+    try {
+        const { name, phone, address } = req.body;
+        const updates = [];
+        const values = [];
+
+        if (name) { updates.push('name = ?'); values.push(name); }
+        if (phone !== undefined) { updates.push('phone = ?'); values.push(phone); }
+        if (address !== undefined) { updates.push('address = ?'); values.push(address); }
+
+        if (updates.length === 0) {
+            return res.status(400).json({ error: 'No fields to update' });
+        }
+
+        values.push(req.user.id);
+        db.prepare(`UPDATE users SET ${updates.join(', ')} WHERE id = ?`).run(...values);
+
+        const user = db.prepare('SELECT id, name, email, phone, address, created_at FROM users WHERE id = ?').get(req.user.id);
+        res.json({ user });
+    } catch (err) {
+        console.error('Update profile error:', err);
         res.status(500).json({ error: 'Server error' });
     }
 });

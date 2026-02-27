@@ -38,9 +38,9 @@ function initMap() {
         return;
     }
 
-    // Default to a central location
-    const defaultLat = 40.7128;
-    const defaultLng = -74.006;
+    // Default to Cairo, Egypt
+    const defaultLat = 30.0444;
+    const defaultLng = 31.2357;
 
     map = L.map('locationMap').setView([defaultLat, defaultLng], 13);
 

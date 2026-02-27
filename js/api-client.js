@@ -64,6 +64,13 @@ export function isLoggedIn() {
     return !!getToken();
 }
 
+export async function updateProfile(data) {
+    return apiFetch('/auth/profile', {
+        method: 'PUT',
+        body: JSON.stringify(data),
+    });
+}
+
 // ── Orders ──
 
 export async function placeOrder(items, shippingAddress, subtotal, tax, total) {

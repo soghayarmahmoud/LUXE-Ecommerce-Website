@@ -10,11 +10,14 @@ import { initFilters } from './components/filters.js';
 import { initCart } from './components/cart.js';
 import { initQuickView } from './components/quickView.js';
 import { initCheckout } from './components/checkout.js';
-import { initAuth } from './components/auth.js';
+import { initAuth, setAuthNavigation } from './components/auth.js';
 import { initLocation } from './components/location.js';
 import { initErrorBoundary } from './components/error.js';
 import { initLoading, showLoading, hideLoading } from './components/loading.js';
 import { initBlog, setBlogNavigation } from './components/blog.js';
+import { initProfile, setProfileNavigation, renderProfile } from './components/profile.js';
+import { initOffline } from './components/offline.js';
+import { initCookieConsent } from './components/cookies.js';
 import { $, debounce, showToast } from './utils/helpers.js';
 
 // All page section IDs
@@ -28,13 +31,16 @@ const PAGE_MAP = {
     blogArticle: { sections: ['blogArticleSection'], showFooter: true },
     privacy: { sections: ['privacySection'], showFooter: true },
     terms: { sections: ['termsSection'], showFooter: true },
+    auth: { sections: ['authSection'], showFooter: false },
+    profile: { sections: ['profileSection'], showFooter: true },
     checkout: { sections: ['checkoutSection'], showFooter: false },
 };
 
 const ALL_SECTION_IDS = [
     'heroBanner', 'shopSection', 'aboutSection', 'contactSection',
     'helpSection', 'careersSection', 'blogSection', 'blogArticleSection',
-    'privacySection', 'termsSection', 'checkoutSection'
+    'privacySection', 'termsSection', 'authSection', 'profileSection',
+    'checkoutSection'
 ];
 
 /**
@@ -53,7 +59,6 @@ function showPage(page) {
     config.sections.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-            // Hero uses flex, everything else block
             el.style.display = id === 'heroBanner' ? 'flex' : 'block';
         }
     });
@@ -62,19 +67,29 @@ function showPage(page) {
     const footer = document.getElementById('footer');
     if (footer) footer.style.display = config.showFooter ? 'block' : 'none';
 
+    // Header visibility (hide on auth page)
+    const header = document.getElementById('header');
+    if (header) header.style.display = page === 'auth' ? 'none' : 'block';
+
     // Update active nav link
     document.querySelectorAll('.header__nav-link').forEach(l => l.classList.remove('active'));
     const activeLink = document.querySelector(`.header__nav-link[data-nav="${page}"]`);
     if (activeLink) activeLink.classList.add('active');
+
+    // If profile page, render it
+    if (page === 'profile') {
+        renderProfile();
+    }
 }
 
 /**
  * Bootstrap the application
  */
 async function init() {
-    // Initialize loading & error immediately (before anything can fail)
+    // Initialize loading & error immediately
     initLoading();
     initErrorBoundary();
+    initOffline();
     showLoading();
 
     showSkeletons();
@@ -84,8 +99,14 @@ async function init() {
     initCart();
     initQuickView();
     initCheckout();
+
+    // Auth — pass showPage for page-based navigation
+    setAuthNavigation(showPage);
     initAuth();
+
     initLocation();
+    initProfile();
+    setProfileNavigation(showPage);
 
     // Theme
     initTheme();
@@ -99,7 +120,7 @@ async function init() {
     // Contact form
     initContactForm();
 
-    // Blog — pass showPage so blog.js can navigate without circular imports
+    // Blog
     setBlogNavigation(showPage);
     await initBlog();
 
@@ -116,6 +137,9 @@ async function init() {
 
     // Hide loading overlay
     hideLoading();
+
+    // Cookie consent (show after page loads)
+    setTimeout(() => initCookieConsent(), 1500);
 
     console.log('🛍️ LUXE E-Commerce initialized');
 }
@@ -151,7 +175,6 @@ function initNavigation() {
 
         const page = link.dataset.nav;
 
-        // Navigate
         dispatch({ type: 'SET_PAGE', payload: page });
         showPage(page);
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -203,7 +226,7 @@ function initNavigation() {
 }
 
 /**
- * Header search bar syncs with sidebar search
+ * Header search bar
  */
 function initHeaderSearch() {
     const headerInput = document.getElementById('headerSearchInput');
@@ -213,7 +236,6 @@ function initHeaderSearch() {
         const debouncedSearch = debounce((val) => {
             dispatch({ type: 'SET_SEARCH', payload: val });
             if (sidebarInput) sidebarInput.value = val;
-            // Navigate to shop if searching from another page
             const { currentPage } = getState();
             if (val && currentPage !== 'shop') {
                 dispatch({ type: 'SET_PAGE', payload: 'shop' });
