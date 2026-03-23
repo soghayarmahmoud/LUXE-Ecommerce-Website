@@ -240,7 +240,8 @@ graph TD
 This project is licensed under the **MIT License**.
 
 ---
-
+## ⭐ If you like this project, consider sponsoring me
+---
 <p align="center">
   Built with ❤️ using Vanilla JavaScript
 </p>
