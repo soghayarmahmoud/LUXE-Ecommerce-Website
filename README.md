@@ -27,24 +27,24 @@
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Description |
 |:---|:---|
-| 🛍️ **Dynamic Product Grid** | 20 products rendered from JSON with lazy-loaded images and staggered animations |
-| 🔍 **Advanced Filtering** | Real-time search, category checkboxes, price range slider, rating filter, sort options |
-| 🛒 **Interactive Cart** | Slide-out drawer with quantity controls, live subtotal/tax/total calculations |
-| 👁️ **Product Quick View** | Modal with full details, quantity selector, feature badges |
-| 📦 **Multi-Step Checkout** | 3-step form (Shipping → Payment → Review) with real-time RegEx validation |
-| 🔐 **User Authentication** | Register & login with bcrypt hashing + JWT tokens, session persistence |
-| 📍 **GPS Location Picker** | Interactive Leaflet map, GPS geolocation, drag-to-set, reverse geocoding |
-| 💾 **Database Persistence** | Orders, users, and locations saved to SQLite via REST API |
-| 📱 **Responsive Design** | Mobile-first with breakpoints at 480px, 768px, and 1024px |
-| 🎨 **Premium Aesthetics** | Glassmorphism, gradients, micro-animations, CSS custom properties |
+|  **Dynamic Product Grid** | 20 products rendered from JSON with lazy-loaded images and staggered animations |
+|  **Advanced Filtering** | Real-time search, category checkboxes, price range slider, rating filter, sort options |
+|  **Interactive Cart** | Slide-out drawer with quantity controls, live subtotal/tax/total calculations |
+|  **Product Quick View** | Modal with full details, quantity selector, feature badges |
+|  **Multi-Step Checkout** | 3-step form (Shipping → Payment → Review) with real-time RegEx validation |
+|  **User Authentication** | Register & login with bcrypt hashing + JWT tokens, session persistence |
+|  **GPS Location Picker** | Interactive Leaflet map, GPS geolocation, drag-to-set, reverse geocoding |
+|  **Database Persistence** | Orders, users, and locations saved to SQLite via REST API |
+|  **Responsive Design** | Mobile-first with breakpoints at 480px, 768px, and 1024px |
+|  **Premium Aesthetics** | Glassmorphism, gradients, micro-animations, CSS custom properties |
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -66,7 +66,7 @@
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 luxe-ecommerce/
@@ -118,7 +118,7 @@ luxe-ecommerce/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -142,7 +142,7 @@ Open **http://localhost:3000** in your browser.
 
 ---
 
-## 📡 API Reference
+##  API Reference
 
 ### Authentication
 
@@ -150,27 +150,27 @@ Open **http://localhost:3000** in your browser.
 |:---|:---|:---|:---|
 | `POST` | `/api/auth/register` | `{ name, email, password, phone? }` | Create a new account |
 | `POST` | `/api/auth/login` | `{ email, password }` | Sign in, returns JWT |
-| `GET` | `/api/auth/me` | — | Get current user (🔒 auth) |
+| `GET` | `/api/auth/me` | — | Get current user ( auth) |
 
 ### Orders
 
 | Method | Endpoint | Body | Description |
 |:---|:---|:---|:---|
-| `POST` | `/api/orders` | `{ items, shipping_address, subtotal, tax, total }` | Place an order (🔒 auth) |
-| `GET` | `/api/orders` | — | Get order history (🔒 auth) |
+| `POST` | `/api/orders` | `{ items, shipping_address, subtotal, tax, total }` | Place an order ( auth) |
+| `GET` | `/api/orders` | — | Get order history ( auth) |
 
 ### Locations
 
 | Method | Endpoint | Body | Description |
 |:---|:---|:---|:---|
-| `POST` | `/api/locations` | `{ lat, lng, address, label?, is_default? }` | Save a location (🔒 auth) |
-| `GET` | `/api/locations` | — | Get saved locations (🔒 auth) |
+| `POST` | `/api/locations` | `{ lat, lng, address, label?, is_default? }` | Save a location ( auth) |
+| `GET` | `/api/locations` | — | Get saved locations ( auth) |
 
-> 🔒 = Requires `Authorization: Bearer <token>` header
+>  = Requires `Authorization: Bearer <token>` header
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ```sql
 users (id, name, email, password_hash, phone, address, created_at)
@@ -180,7 +180,7 @@ user_locations (id, user_id, label, lat, lng, address, is_default, created_at)
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 graph TD
@@ -202,7 +202,7 @@ graph TD
 
 ---
 
-## 🎨 Design System
+##  Design System
 
 | Token | Value | Usage |
 |:---|:---|:---|
@@ -215,7 +215,7 @@ graph TD
 
 ---
 
-## 📱 Responsive Breakpoints
+##  Responsive Breakpoints
 
 | Breakpoint | Target | Layout |
 |:---|:---|:---|
@@ -225,7 +225,7 @@ graph TD
 
 ---
 
-## 🔒 Security
+##  Security
 
 - Passwords hashed with **bcrypt** (10 salt rounds)
 - Authentication via **JWT** tokens (7-day expiry)
@@ -235,7 +235,7 @@ graph TD
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License**.
 
